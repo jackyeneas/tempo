@@ -19,6 +19,7 @@ document.querySelector('.busca').addEventListener('submit', async (event) =>{
                 climaTexto: json.weather[0].description,
                 windSpeed: json.wind.speed,
                 windAngle: json.wind.deg,
+                temp: json.main.temp
             });
        
         } else{
@@ -33,7 +34,7 @@ function showWarning(msg){
 
 function clearInfo(){
     showWarning('');
-    document.querySelectorAll('.resultado').style.display ='none';
+    document.querySelector('.resultado').style.display ='none';
 }
 
 function showInfo(dados){
@@ -44,4 +45,6 @@ function showInfo(dados){
     document.querySelector('.temp img').setAttribute('src', `http://openweathermap.org/img/wn/${dados.climaIcon}@2x.png`);
     document.querySelector('.climaTitulo').innerHTML=`${dados.climaTexto}`;
     document.querySelector('.ventoPonto').style.transform = `rotate(${dados.windAngle-90}deg)`;
+
+    document.querySelector('.resultado').style.display ='block';
 }
